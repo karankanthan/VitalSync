@@ -1,7 +1,7 @@
 import axios from "axios";
 
 const API = axios.create({
- baseURL: "baseURL: "https://vitalsync-backend-necr.onrender.com""
+ baseURL: "https://vitalsync-backend-necr.onrender.com"
 });
 
 export const getPatients = () => API.get("/patients");
