@@ -9,7 +9,7 @@ export function AuthProvider({ children }) {
 
   useEffect(() => {
     if (token) {
-      fetch('/api/auth/me', {
+      fetch('https://vitalsync-backend-necr.onrender.com/api/auth/me', {
         headers: { Authorization: `Bearer ${token}` }
       })
         .then(r => r.json())
@@ -25,7 +25,7 @@ export function AuthProvider({ children }) {
   }, [token]);
 
   const login = async (email, password) => {
-    const res = await fetch('/api/auth/login', {
+    const res = await fetch('https://vitalsync-backend-necr.onrender.com/api/auth/login', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ email, password })
