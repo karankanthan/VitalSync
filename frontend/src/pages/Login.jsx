@@ -1,5 +1,5 @@
 import { useState } from "react";
-import axios from "axios";
+import API from "../services/api";
 import { useNavigate } from "react-router-dom";
 import "../styles/login.css";
 
@@ -16,10 +16,10 @@ function Login(){
 
   try{
 
-   const res = await axios.post(
-    ""https://vitalsync-backend-necr.onrender.com/api/auth/login"",
-    {email,password}
-   );
+   const res = await API.post(
+"/auth/login",
+{ email, password }
+);
 
    localStorage.setItem("token",res.data.token);
 
