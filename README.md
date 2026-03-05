@@ -8,7 +8,7 @@ A full-stack MERN application for managing hospital shift handovers, patient bed
 - **Backend**: Node.js + Express.js
 - **Database**: MongoDB + Mongoose
 - **Auth**: JWT tokens (12hr expiry)
-- **Deploy**: Vercel (frontend) + Render (backend)
+- **Deploy**: Netlify (frontend) + Render (backend)
 
 ---
 
