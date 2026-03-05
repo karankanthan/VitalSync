@@ -1,4 +1,5 @@
 import React, { createContext, useContext, useState, useEffect } from 'react';
+import API from "../services/api";
 
 const AuthContext = createContext(null);
 
@@ -8,29 +9,25 @@ export function AuthProvider({ children }) {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    if (token) {
-      fetch('https://vitalsync-backend-necr.onrender.com/api/auth/me', {
-        headers: { Authorization: `Bearer ${token}` }
+  if (token) {
+    API.get("/auth/me", {
+      headers: { Authorization: `Bearer ${token}` }
+    })
+      .then(res => {
+        const data = res.data;
+        if (data.user) setUser(data.user);
+        else logout();
       })
-        .then(r => r.json())
-        .then(data => {
-          if (data.user) setUser(data.user);
-          else logout();
-        })
-        .catch(() => logout())
-        .finally(() => setLoading(false));
-    } else {
-      setLoading(false);
-    }
-  }, [token]);
+      .catch(() => logout())
+      .finally(() => setLoading(false));
+  } else {
+    setLoading(false);
+  }
+}, [token]);
 
   const login = async (email, password) => {
-    const res = await fetch('https://vitalsync-backend-necr.onrender.com/api/auth/login', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ email, password })
-    });
-    const data = await res.json();
+    const res = await API.post("/auth/login", { email, password });
+    const data = res.data;
     if (!res.ok) throw new Error(data.message || 'Login failed');
     localStorage.setItem('vs_token', data.token);
     setToken(data.token);

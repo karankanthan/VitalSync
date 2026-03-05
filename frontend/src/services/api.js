@@ -1,5 +1,6 @@
 import axios from "axios";
 
+
 const API = axios.create({
  baseURL: "https://vitalsync-backend-necr.onrender.com/api"
 });
