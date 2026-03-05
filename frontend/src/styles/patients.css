@@ -1,0 +1,54 @@
+.patient-container{
+
+ padding:20px;
+
+}
+
+.patient-list{
+
+ display:flex;
+ flex-wrap:wrap;
+
+}
+
+.patient-card{
+
+ border:1px solid #ddd;
+ border-radius:6px;
+
+ padding:15px;
+ margin:10px;
+
+ width:220px;
+
+ background:white;
+
+ box-shadow:0 2px 6px rgba(0,0,0,0.1);
+
+}
+
+.patient-card h4{
+
+ margin:0 0 10px 0;
+
+}
+
+.patient-card p{
+
+ margin:4px 0;
+
+ font-size:14px;
+
+}
+
+.patient-card.critical{
+
+ border-left:6px solid red;
+
+}
+
+.patient-card.stable{
+
+ border-left:6px solid green;
+
+}
